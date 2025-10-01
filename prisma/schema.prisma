@@ -33,10 +33,11 @@ model Post {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
+  id        Int       @id @unique(map: "id") @default(autoincrement())
   email     String    @unique(map: "email")
   name      String
   createdAt DateTime  @default(now())
+  password  String    @db.VarChar(150)
   Comment   Comment[]
   Post      Post[]
 }
