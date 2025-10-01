@@ -7,14 +7,14 @@ import { UpdatePostDto } from './dto/update-post.dto';
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
-  @Post()
+  @Post('add')
   create(@Body() createPostDto: CreatePostDto) {
     return this.postService.create(createPostDto);
   }
 
-  @Get()
-  findAll() {
-    return this.postService.findAll();
+  @Get('all')
+  async findAllPosts() {
+    return await this.postService.findAll();
   }
 
   @Get(':id')

@@ -13,6 +13,10 @@ export class UsersService {
         })
     }
 
+    async getAllUsers(): Promise<Users[] | null>{
+        return await this._prismaService.user.findMany({})
+    }
+
     async logInUser(email: string, pass: string): Promise<any>{
         return await this._prismaService.user.findUnique({
             where: {email: email, password: pass}

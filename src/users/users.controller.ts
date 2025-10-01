@@ -7,9 +7,13 @@ export class UsersController {
 
     constructor(private _usersService: UsersService) {}
 
-    @PublicAuth()
     @Get('/:id')
     async getUser(@Param('id') id: string){
         return this._usersService.getUsers(Number(id));
+    }
+
+    @Get('all')
+    async getSingleUser(){
+        return await this._usersService.getAllUsers();
     }
 }
